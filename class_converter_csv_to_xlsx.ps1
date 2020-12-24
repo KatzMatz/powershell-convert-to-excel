@@ -1,5 +1,5 @@
-﻿# Define Class
+﻿# Define class
 
 class ConverterCsvToXlsx {
-    
+
 }
