@@ -94,7 +94,18 @@ class ConverterCsvToXlsx {
             [GC]::Collect()
         }
 
+    }
 
+    [String[]] getCSVFilesPath([String] $dirPath) {
+        [String[]] $csvFilesList = @()
+
+        $childItems = Get-ChildItem $dirPath
+
+        foreach ($item in $childItems) {
+            $scvFilesList += $item.Name
+        }
+
+        return $csvFilesList
     }
 
 }
