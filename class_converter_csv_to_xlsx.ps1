@@ -102,7 +102,9 @@ class ConverterCsvToXlsx {
         $childItems = Get-ChildItem $dirPath
 
         foreach ($item in $childItems) {
-            $scvFilesList += $item.Name
+            if ($item.Name.Contains(".csv")) {
+                $csvFilesList += $item.Name
+            }
         }
 
         return $csvFilesList
