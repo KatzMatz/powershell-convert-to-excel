@@ -96,18 +96,18 @@ class ConverterCsvToXlsx {
 
     }
 
-    [String[]] getCSVFilesPath([String] $dirPath) {
-        [String[]] $csvFilesList = @()
+    [String[]] getCsvPathList([String] $dirPath) {
+        [String[]] $csvPathList = @()
 
         $childItems = Get-ChildItem $dirPath
 
         foreach ($item in $childItems) {
             if ($item.Name.Contains(".csv")) {
-                $csvFilesList += $item.Name
+                $csvPathList += $item.Name
             }
         }
 
-        return $csvFilesList
+        return $csvPathList
     }
 
 }
