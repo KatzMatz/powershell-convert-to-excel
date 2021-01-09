@@ -2,12 +2,32 @@
 
 class ConverterCsvToXlsx {
 
+    [String] $xlsxPath
+
+    ConverterCsvToXlsx() {
+        $currentDate = Get-Date -Format "yyyy_MMdd_HHmmss"
+        $this.xlsxPath = $PSScriptRoot + "\result\" + $currentDate + ".xlsx" 
+    }
+
+    [void] excecuteConvertCsvFiles([String] $dirPath) {
+        $this.excecuteConvertCsvFiles($dirPath, $this.xlsxPath)
+    }
+
+    [void] excecuteConvertCsvFiles([String] $dirPath, [String] $xlsxPath) {
+        if (Test-Path $dirPath) {
+            [String[]] $csvFilesNameList = $this.getCsvPathList($dirPath)
+
+            foreach ($item in $csvFilesNameList) {
+                $this.convertCsvToXlsx(($PSScriptRoot + "\" + $item), $xlsxPath)
+            }
+        }
+    }
+
     [void] convertCsvToXlsx([String] $csvPath, [String] $xlsxPath) {
         if (!(Tets-Path $csvPath)) {
             return
         }
-
-        
+      
         try {
             # Import the csv file
             $data = Import-Csv $csvPath -Encoding UTF8
