@@ -1,6 +1,6 @@
 ﻿# Define Class
 
-class ConverterCsvToXlsx {
+class ConverterCsvToExcel {
 
     [String] $xlsxPath
 
