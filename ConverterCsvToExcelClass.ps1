@@ -119,12 +119,10 @@ class ConverterCsvToExcel {
     [String[]] getCsvPathList([String] $dirPath) {
         [String[]] $csvPathList = @()
 
-        $childItems = Get-ChildItem $dirPath
+        $childItems = Get-ChildItem $dirPath -Filter "*.csv"
 
         foreach ($item in $childItems) {
-            if ($item.Name.Contains(".csv")) {
-                $csvPathList += $item.Name
-            }
+            $csvPathList += $item.Name
         }
 
         return $csvPathList
